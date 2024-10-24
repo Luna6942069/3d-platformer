@@ -13,10 +13,10 @@ public class WaypointFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) <  .1f)
+        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].transform.position) < .1f)
         {
             currentWaypointIndex++;
-            if (currentWaypointIndex < waypoints.Length)
+            if (currentWaypointIndex >= waypoints.Length)
             {
                 currentWaypointIndex = 0;
             }
