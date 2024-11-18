@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource jumpSound;
 
     [SerializeField] float mouseSensitivity = 100f;
-    float xrotation = 0;
+    float xRotation = 0;
     [SerializeField] Transform playercamera;
     // Start is called before the first frame update
     void Start()
@@ -32,15 +32,18 @@ public class PlayerMovement : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-       //
+       
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
+        playercamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.Rotate(Vector3.up * mouseX);
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        Vector3 moveDirection = transform.right * horizontalInput + transform.forward * verticalInput;
+        rb.velocity = new Vector3(moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z *movementSpeed);  
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
