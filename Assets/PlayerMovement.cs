@@ -14,15 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] AudioSource jumpSound;
 
-<<<<<<< Updated upstream
+
     [SerializeField] float mouseSensitivity = 100f;
     float xRotation = 0;
     [SerializeField] Transform playercamera;
-=======
-   // [SerializeField] float mouseSensitivity = 100f;
-   // float xrotation = 0;
-   // [SerializeField] Transform playercamera;
->>>>>>> Stashed changes
+
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +32,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-       // float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+      float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+       float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-<<<<<<< Updated upstream
+
        
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-=======
-       //
-       // xRotation -= mouseY;
-       // xRotation = Mathf.Clamp(xRotation, -90f, 90f);
->>>>>>> Stashed changes
+
+       
+       
+
 
         playercamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
