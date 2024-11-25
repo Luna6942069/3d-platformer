@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     float xRotation = 0;
     [SerializeField] Transform playercamera;
 
+    public GameObject Coin;
+
   
     // Start is called before the first frame update
     void Start()
@@ -69,11 +71,18 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
             Jump();
+            DropCoin();
         }
     }
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
     }
-   
+  
+    void DropCoin()
+    {
+        Vector3 position = transform.position;
+        GameObject coin = Instantiate(Coin, position, Quaternion.identity);
+        coin.SetActive(true);
+    }
 }
