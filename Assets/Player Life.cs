@@ -7,6 +7,10 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] AudioSource deathSound;
     bool dead = false;
+
+    public GameObject deathScreenCanvas;
+    public GameObject coinsText;
+
     private void Update()
     {
         if (transform.position.y < -1f && !dead)
@@ -29,6 +33,12 @@ public class PlayerLife : MonoBehaviour
         Invoke(nameof(ReloadLevel), 1.3f);
         dead = true;
         deathSound.Play();
+        deathScreenCanvas.SetActive(true);
+
+        coinsText.SetActive(false);
+
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
     }
     void ReloadLevel()
     {

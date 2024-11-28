@@ -13,7 +13,7 @@ public class DeathScreen : MonoBehaviour
     {
         deathScreenCanvas.SetActive(true);
 
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
 
     }
 
@@ -22,10 +22,16 @@ public class DeathScreen : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Start");
+    }
+
     public void QuitGame()
     {
         Time.timeScale = 1f;
         Application.Quit();
-    
+        
     }
 }

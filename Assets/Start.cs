@@ -9,5 +9,6 @@ public class Start : MonoBehaviour
     {
         
         SceneManager.LoadScene("Level01");
+        Time.timeScale = 1f;
     }
 }
