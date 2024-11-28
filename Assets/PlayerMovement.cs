@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] AudioSource jumpSound;
 
+    Animator MyAnim;
 
     [SerializeField] float mouseSensitivity = 100f;
     float xRotation = 0;
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MyAnim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody> ();
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
       float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -53,11 +57,14 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 moveDirection = transform.right * horizontalInput + transform.forward * verticalInput;
-        rb.velocity = new Vector3(moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z *movementSpeed);  
+        rb.velocity = new Vector3(moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z *movementSpeed);
+        MyAnim.SetFloat("speed", moveDirection.magnitude);
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
         }
+
     }
 
     void Jump()
@@ -85,4 +92,8 @@ public class PlayerMovement : MonoBehaviour
         GameObject coin = Instantiate(Coin, position, Quaternion.identity);
         coin.SetActive(true);
     }
+    
+    
+
 }
+     

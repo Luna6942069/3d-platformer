@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 8826315343132144356}
   - component: {fileID: 5336093541243589599}
   m_Layer: 0
-  m_Name: cunt
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,8 +162,8 @@ Transform:
   m_LocalScale: {x: 0.45212892, y: 0.45212892, z: 0.45212892}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6019332684179315946}
   - {fileID: 8098834277182644813}
+  - {fileID: 6019332684179315946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6700696412145939968
@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathSound: {fileID: 5336093541243589599}
+  deathScreenCanvas: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!114 &7779249221647983570
 MonoBehaviour:
   m_ObjectHideFlags: 0

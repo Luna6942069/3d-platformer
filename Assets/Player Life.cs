@@ -22,7 +22,7 @@ public class PlayerLife : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy Body"))
         {
-            GetComponent<MeshRenderer>().enabled = false;
+            //GetComponent<MeshRenderer>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<PlayerMovement>().enabled = false;
             Die();
@@ -30,7 +30,6 @@ public class PlayerLife : MonoBehaviour
     }
     void Die()
     {
-        Invoke(nameof(ReloadLevel), 1.3f);
         dead = true;
         deathSound.Play();
         deathScreenCanvas.SetActive(true);
